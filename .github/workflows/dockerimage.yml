@@ -1,4 +1,4 @@
-name: Build Image
+name: Publish new version of image
 
 on:
   push:
@@ -9,7 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
+    - name: Build and push the image
       run: |
-        docker build -t bitops/tiny-whale:$(date +%s) .
-        echo foobar
+        docker login -u bitops -p "{{ secrets.DOCKERHUB_PASSWORD }}"
+
+        TAG=$(date +%s)
+        docker build -t "bitops/tiny-whale:$TAG" .
+        docker push "bitops/tiny-whale:$TAG"
