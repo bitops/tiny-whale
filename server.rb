@@ -20,14 +20,14 @@ server.start
 __END__
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>a tiny whale</title>
-	</head>
-	<body>
-		<div>
+  <head>
+    <title>a tiny whale</title>
+  </head>
+  <body>
+    <div>
       <p>
         &#128011;
       </p>
-		</div>
+    </div>
   </body>
 </html>
