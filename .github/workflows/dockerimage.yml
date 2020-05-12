@@ -11,8 +11,4 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build and push the image
       run: |
-        docker login -u bitops -p "{{ secrets.DOCKERHUB_PASSWORD }}"
-
-        TAG=$(date +%s)
-        docker build -t "bitops/tiny-whale:$TAG" .
-        docker push "bitops/tiny-whale:$TAG"
+        docker build -t bitops/tiny-whale:$(date +%s) .
