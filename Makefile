@@ -7,3 +7,11 @@ build:
 
 push: build
 	docker push bitops/tinywhale:latest
+
+container-version:
+	docker exec -it $$(docker ps | grep tinywhale | awk '{print $$1}') cat /version.txt
+
+code-version:
+	git rev-parse head
+
+diff: container-version code-version
