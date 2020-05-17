@@ -3,6 +3,9 @@
 
 FROM ruby
 
+ARG GITHASH
+RUN echo "$GITHASH" > /version.txt
+
 COPY server.rb /server.rb
 
 EXPOSE 8080

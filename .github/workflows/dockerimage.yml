@@ -11,7 +11,10 @@ jobs:
     - uses: actions/checkout@master
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
+      env:
+        GITHASH: $GITHUB_SHA
       with:
         name: bitops/tinywhale
         username: bitops
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        buildargs: GITHASH
