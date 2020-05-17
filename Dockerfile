@@ -3,7 +3,7 @@
 
 FROM ruby
 
-ARG GITHASH
+ARG GITHASH=unspecified
 RUN echo "$GITHASH" > /version.txt
 
 COPY server.rb /server.rb
