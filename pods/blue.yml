@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: blue
+spec:
+  tolerations:
+  - key: "COLOR"
+    operator: "Equal"
+    value: "BLUE"
+    effect: "NoSchedule"
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: blue
+            operator: In
+            values: [""]
+  containers:
+    - name: blue-whale
+      image: bitops/tinywhale
