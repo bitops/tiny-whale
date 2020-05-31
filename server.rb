@@ -1,10 +1,13 @@
 require 'webrick'
+require 'erb'
+
+HTML = ERB.new(DATA.read).result(binding)
 
 class Simple < WEBrick::HTTPServlet::AbstractServlet
   def do_GET request, response
     response.status = 200
     response['Content-Type'] = 'text/html'
-    response.body = DATA.read
+    response.body = HTML
   end
 end
 
@@ -23,7 +26,7 @@ __END__
   <head>
     <title>a tiny whale</title>
   </head>
-  <body>
+  <body style="background-color: <%= ENV['COLOR'] %>">
     <div>
       <p>
         &#128011;
