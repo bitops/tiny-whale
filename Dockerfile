@@ -1,7 +1,7 @@
 
 # a simple ruby web app
 
-FROM ruby
+FROM ruby:2.7.4
 
 ARG GITHASH=unspecified
 RUN echo "$GITHASH" > /version.txt

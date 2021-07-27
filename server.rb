@@ -1,6 +1,7 @@
 require 'webrick'
 require 'erb'
 
+BACKGROUND_COLOR = ENV['COLOR']
 HTML = ERB.new(DATA.read).result(binding)
 
 class Simple < WEBrick::HTTPServlet::AbstractServlet
@@ -26,8 +27,9 @@ __END__
   <head>
     <title>a tiny whale</title>
   </head>
-  <body style="background-color: <%= ENV['COLOR'] %>">
+  <body style="background-color: <%= BACKGROUND_COLOR %>">
     <div>
+      <h2>Whale Hello Thar!</h2>
       <p>
         &#128011;
       </p>
